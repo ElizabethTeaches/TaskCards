@@ -3,7 +3,7 @@ import task_cards.tasks.task as task
 import task_cards.utils.tex as tex
 import random
 import numpy as np
-import utils.mpl as umpl
+import task_cards.utils.mpl as umpl
 import uuid
 import os
 import io

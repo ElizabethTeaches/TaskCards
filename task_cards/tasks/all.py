@@ -36,7 +36,7 @@ def _find_tasks(prefix: str, folder: str) -> typing.Set[task.Task]:
     return res
 
 
-ALL_TASKS = _find_tasks('tasks.', 'tasks')
+ALL_TASKS = _find_tasks('task_cards.tasks.', os.path.join('task_cards', 'tasks'))
 
 TASKS_BY_MODULE_AND_NAME = dict()
 TASKS_BY_NAME = dict()  # duplicates chosen arbitrarily
