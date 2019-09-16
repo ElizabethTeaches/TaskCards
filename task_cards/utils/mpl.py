@@ -2,9 +2,11 @@
 import matplotlib.pyplot as plt
 
 
-def create_graph(x, y, width, height, ymin, filename):
+def create_graph(x, y, width, height, ymin, filename,
+                 **savefig_kwargs):
     """Creates and saves a plot with the given x and y coordinates
-    and saves it to the given file
+    and saves it to the given file. If the file is a file-like
+    object instead of a string, it saves it there.
 
     Arguments:
         x (np.ndarray[samples]): the x-coordinates
@@ -12,7 +14,7 @@ def create_graph(x, y, width, height, ymin, filename):
         width (float): the left and right edges of the plot
         height (float): the maximum y of the plot
         ymin (float): the minimum y of the plot
-        filename (str): where to save the plot to
+        filename (file or str): where to save the plot to
     """
     fig, axes = plt.subplots(figsize=(15, 15))
 
@@ -37,4 +39,6 @@ def create_graph(x, y, width, height, ymin, filename):
         item.set_fontsize(32)
     for spine in axes.spines.values():
         spine.set_linewidth(6)
-    plt.savefig(filename, dpi=300)
+    if 'dpi' not in savefig_kwargs:
+        savefig_kwargs['dpi'] = 300
+    plt.savefig(filename, **savefig_kwargs)
